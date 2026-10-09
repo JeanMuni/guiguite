@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inovação na Mobilidade Urbana — Caminho Seguro</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <!-- Leaflet CSS (Mapa) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+
+  <!-- Estilos Personalizados -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TOPO INSTITUCIONAL / HEADER -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="logo-box">
+          <img src="logo_cera.jpg" alt="Logo C.E.R.A." class="header-logo">
+        </div>
+        <div>
+          <h2>Inovação na Mobilidade Urbana</h2>
+          <span class="sub-brand">Caminho Seguro • Projeto Educacional de Trânsito</span>
+        </div>
+      </div>
+
+      <div class="header-logos">
+        <img src="logo_parana_integral.jpg" alt="Paraná Integral" class="partner-logo">
+        <div class="project-tag">
+          <i class="ph ph-trophy"></i> Guigui de Trânsito 2026
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="app-container">
+    <!-- NAVEGAÇÃO POR ABAS -->
+    <nav class="tabs-nav">
+      <button class="tab-btn active" onclick="switchTab('inicio')">
+        <i class="ph ph-house"></i>
+        <span>Início</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('investigacao')">
+        <i class="ph ph-magnifying-glass"></i>
+        <span>Investigação</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('mapa')">
+        <i class="ph ph-map-trifold"></i>
+        <span>Mapa & Rotas</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('quiz')">
+        <i class="ph ph-game-controller"></i>
+        <span>Quiz de Segurança</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('guia')">
+        <i class="ph ph-book-open"></i>
+        <span>Guia do Patinete</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('pesquisa')">
+        <i class="ph ph-chart-bar"></i>
+        <span>Dados da Pesquisa</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('escola')">
+        <i class="ph ph-graduation-cap"></i>
+        <span>Nossa Escola</span>
+      </button>
+    </nav>
+
+    <!-- ÁREA DE CONTEÚDO DINÂMICO -->
+    <main class="content-area">
+
+      <!-- TELA 1: PÁGINA INICIAL (HERO) -->
+      <section id="tab-inicio" class="tab-content active">
+        <div class="hero-card">
+          <div class="hero-text">
+            <span class="badge">Inovação na Mobilidade Urbana</span>
+            <h1>CAMINHO SEGURO</h1>
+            <p class="hero-subtitle">Tecnologia a favor de um trânsito mais seguro.</p>
+            <blockquote class="hero-quote">
+              “Conhecer os riscos é o primeiro passo para transformar o trânsito. Todos nós fazemos parte dele.”
+            </blockquote>
+            <div class="hero-buttons">
+              <button class="btn btn-primary" onclick="switchTab('mapa')">
+                <i class="ph ph-map-pin"></i> Conheça Nosso Mapa de Segurança
+              </button>
+              <button class="btn btn-outline" onclick="switchTab('guia')">
+                <i class="ph ph-scooter"></i> Aprenda a Circular com Segurança
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-stats-grid">
+          <div class="stat-card">
+            <i class="ph ph-shield-warning stat-icon warning"></i>
+            <div>
+              <h3>Diagnóstico Viário</h3>
+              <p>Mapeamento de perigos no entorno do Colégio Estadual Rancho Alegre</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <i class="ph ph-navigation-arrow stat-icon"></i>
+            <div>
+              <h3>Rotas Recomendadas</h3>
+              <p>Caminhos otimizados para micromóveis</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <i class="ph ph-users-three stat-icon success"></i>
+            <div>
+              <h3>Participação Comunitária</h3>
+              <p>Estudantes e moradores engajados</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TELA 2: NOSSA INVESTIGAÇÃO -->
+      <section id="tab-investigacao" class="tab-content">
+        <div class="page-title">
+          <h2><i class="ph ph-magnifying-glass"></i> Nossa Investigação de Campo</h2>
+          <p>Os alunos foram a campo para mapear de forma criteriosa os problemas no trânsito do entorno escolar.</p>
+        </div>
+
+        <div class="timeline-steps">
+          <div class="step-box">
+            <span class="step-num">1</span>
+            <h4>Observação</h4>
+            <p>Identificação de conflitos entre pedestres, veículos e patinetes nos horários de pico.</p>
+          </div>
+          <div class="step-box">
+            <span class="step-num">2</span>
+            <h4>Geolocalização</h4>
+            <p>Registro com coordenadas GPS e fotografias reais dos pontos de vulnerabilidade.</p>
+          </div>
+          <div class="step-box">
+            <span class="step-num">3</span>
+            <h4>Análise dos Dados</h4>
+            <p>Classificação do nível de risco e elaboração de propostas viáveis de intervenção.</p>
+          </div>
+        </div>
+
+        <h3 class="section-subtitle">Principais Pontos Diagnosticados</h3>
+        <div class="grid-cards">
+          <div class="diag-card risk-high">
+            <div class="risk-badge badge-high">⚠️ Risco Alto</div>
+            <h4>Ponto de Risco 01 — Cruzamento sem Visibilidade</h4>
+            <p><strong>Problema:</strong> Vegetação alta e veículos estacionados próximo à esquina bloqueando a visão.</p>
+            <p><strong>Consequência:</strong> Conflito direto entre veículos em velocidade e usuários de patinete.</p>
+            <p><strong>Nossa Proposta:</strong> Poda de manutenção, pintura de sinalização horizontal de área escolar e redução do limite para 30 km/h.</p>
+          </div>
+
+          <div class="diag-card risk-medium">
+            <div class="risk-badge badge-medium">🟡 Risco Médio</div>
+            <h4>Ponto de Risco 02 — Ausência de Travessia Segura</h4>
+            <p><strong>Problema:</strong> Falta de faixa de pedestres no portão secundário de acesso dos alunos.</p>
+            <p><strong>Consequência:</strong> Travessia desordenada de alunos utilizando patinetes e bicicletas.</p>
+            <p><strong>Nossa Proposta:</strong> Implantação de faixa elevada (lombofaixa) com placas de área escolar.</p>
+          </div>
+
+          <div class="diag-card risk-low">
+            <div class="risk-badge badge-low">🟢 Risco Baixo / Atenção</div>
+            <h4>Ponto de Risco 03 — Trecho de Calçada Irregular</h4>
+            <p><strong>Problema:</strong> Calçamento trincado obrigando usuários a irem para o leito da rua.</p>
+            <p><strong>Consequência:</strong> Exposição direta do usuário ao tráfego de caminhões e carros.</p>
+            <p><strong>Nossa Proposta:</strong> Recomposição do pavimento e orientação para compartilhamento consciente.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TELA 3: MAPA DE RISCOS & ROTA SEGURA -->
+      <section id="tab-mapa" class="tab-content">
+        <div class="page-title">
+          <h2><i class="ph ph-map-trifold"></i> Mapa Interativo de Riscos &amp; Rota Segura</h2>
+          <p>Explore os pontos críticos identificados e descubra o trajeto mais seguro recomendado pela nossa equipe.</p>
+        </div>
+
+        <div class="map-layout">
+          <div class="map-wrapper">
+            <div id="map"></div>
+            <div class="map-legend">
+              <span><i class="dot dot-green"></i> Trecho Recomendado</span>
+              <span><i class="dot dot-yellow"></i> Ponto de Atenção</span>
+              <span><i class="dot dot-red"></i> Ponto de Risco Alto</span>
+            </div>
+          </div>
+
+          <div class="map-sidebar">
+            <div class="card-box">
+              <h3><i class="ph ph-info"></i> Detalhes da Localização</h3>
+              <p class="sub-text">Clique em um marcador no mapa para ver as informações detalhadas da investigação.</p>
+              
+              <div id="point-details" class="point-info-box">
+                <div class="empty-state">
+                  <i class="ph ph-cursor-click"></i>
+                  <p>Nenhum ponto selecionado no momento.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-box margin-top">
+              <h3><i class="ph ph-navigation-arrow"></i> Legenda da Rota Segura</h3>
+              <p class="sub-text">A Rota Segura orienta escolhas de menor exposição ao risco, sem substituir a sinalização oficial.</p>
+              <ul class="route-list">
+                <li><strong class="text-green">Rua Verde (Recomendada):</strong> Possui boa visibilidade e velocidade reduzida.</li>
+                <li><strong class="text-yellow">Rua Amarela (Atenção):</strong> Exige parada total antes dos cruzamentos.</li>
+                <li><strong class="text-red">Rua Vermelha (Evitar):</strong> Alto fluxo de veículos pesados.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TELA 4: QUIZ INTERATIVO -->
+      <section id="tab-quiz" class="tab-content">
+        <div class="page-title">
+          <h2><i class="ph ph-game-controller"></i> Você Sabe Circular com Segurança?</h2>
+          <p>Teste seus conhecimentos com situações reais do cotidiano viário escolar.</p>
+        </div>
+
+        <div class="card-box quiz-container">
+          <div class="quiz-header">
+            <span id="quiz-progress-text">Pergunta 1 de 5</span>
+            <div class="progress-bar-bg">
+              <div id="quiz-progress-bar" class="progress-bar-fill" style="width: 20%;"></div>
+            </div>
+          </div>
+
+          <div id="quiz-body"></div>
+
+          <div id="quiz-result" class="result-display hidden"></div>
+        </div>
+      </section>
+
+      <!-- TELA 5: GUIA DO PATINETE SEGURO -->
+      <section id="tab-guia" class="tab-content">
+        <div class="page-title">
+          <h2><i class="ph ph-book-open"></i> Guia do Patinete Seguro</h2>
+          <p>Recomendações essenciais para uma navegação consciente e responsável no trânsito urbano.</p>
+        </div>
+
+        <div class="guide-grid">
+          <div class="guide-card">
+            <i class="ph ph-shield-check guide-icon"></i>
+            <h4>1. Equipamentos de Proteção</h4>
+            <p>O uso de capacete ajustado é indispensável. Joelheiras e cotoveleiras aumentam expressivamente a proteção contra quedas.</p>
+          </div>
+
+          <div class="guide-card">
+            <i class="ph ph-eye guide-icon"></i>
+            <h4>2. Iluminação e Visibilidade</h4>
+            <p>Utilize farol dianteiro branco, lanterna traseira vermelha e roupas claras ou refletivas ao circular ao anoitecer.</p>
+          </div>
+
+          <div class="guide-card">
+            <i class="ph ph-gauge guide-icon"></i>
+            <h4>3. Velocidade Adequada</h4>
+            <p>Mantenha velocidade compatível com a via. Em locais com presença de pedestres, reduza drasticamente o ritmo.</p>
+          </div>
+
+          <div class="guide-card">
+            <i class="ph ph-traffic-signal guide-icon"></i>
+            <h4>4. Respeito à Sinalização</h4>
+            <p>Patinetes devem respeitar semáforos, placas de PARE e prioridade de passagem exatamente como os demais veículos.</p>
+          </div>
+
+          <div class="guide-card">
+            <i class="ph ph-person-walking guide-icon"></i>
+            <h4>5. Prioridade ao Pedestre</h4>
+            <p>O pedestre é o elemento mais vulnerável. Ao transitar em áreas de convivência, a preferência é sempre de quem anda a pé.</p>
+          </div>
+
+          <div class="guide-card">
+            <i class="ph ph-phone-slash guide-icon"></i>
+            <h4>6. Foco Total (Sem Celular)</h4>
+            <p>Nunca utilize o celular ou fones de ouvido enquanto conduz. Sua atenção auditiva e visual deve estar 100% no trânsito.</p>
+          </div>
+
+          <div class="guide-card">
+            <i class="ph ph-warning-circle guide-icon"></i>
+            <h4>7. Cuidado em Cruzamentos</h4>
+            <p>Mesmo que a preferência seja sua, reduza a velocidade, faça contato visual com os motoristas e certifique-se de que foi visto.</p>
+          </div>
+
+          <div class="guide-card">
+            <i class="ph ph-path guide-icon"></i>
+            <h4>8. Vias Adequadas</h4>
+            <p>Dê preferência a ciclofaixas, ciclovias e vias de baixo tráfego. Evite calçadas estreitas e rodovias de alta velocidade.</p>
+          </div>
+
+          <div class="guide-card">
+            <i class="ph ph-user-minus guide-icon"></i>
+            <h4>9. Condutores Individuais</h4>
+            <p>Patinetes foram projetados para transporte individual. Transportar passageiros altera o centro de gravidade e causa acidentes.</p>
+          </div>
+
+          <div class="guide-card">
+            <i class="ph ph-wrench guide-icon"></i>
+            <h4>10. Manutenção Periódica</h4>
+            <p>Cheque freios, pressão dos pneus, aperto de parafusos e nível de bateria antes de iniciar qualquer trajeto.</p>
+          </div>
+
+          <div class="guide-card">
+            <i class="ph ph-hands-clapping guide-icon"></i>
+            <h4>11. Comportamento Respeitoso</h4>
+            <p>Seja cortês, sinalize suas intenções com as mãos ao dobrar e promova a convivência harmoniosa nas vias públicas.</p>
+          </div>
+
+          <div class="guide-card">
+            <i class="ph ph-scales guide-icon"></i>
+            <h4>12. Respeito às Normas Locais</h4>
+            <p>Esteja atento às regulamentações e decretos do seu município sobre velocidades máximas e vias permitidas.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TELA 6: DADOS DA PESQUISA -->
+      <section id="tab-pesquisa" class="tab-content">
+        <div class="page-title">
+          <h2><i class="ph ph-chart-bar"></i> Resultados da Pesquisa Escolar</h2>
+          <p>Dados reais/demonstrativos coletados junto à comunidade acadêmica sobre os hábitos de mobilidade.</p>
+        </div>
+
+        <div class="grid-2col">
+          <div class="card-box">
+            <h3><i class="ph ph-chart-pie"></i> Uso de Equipamentos de Proteção (EPIs)</h3>
+            <p class="sub-text">Frequência de utilização de capacete e iluminação entre os alunos.</p>
+            <div class="chart-container">
+              <canvas id="chartEpis"></canvas>
+            </div>
+          </div>
+
+          <div class="card-box">
+            <h3><i class="ph ph-chart-bar-horizontal"></i> Percepção dos Principais Riscos</h3>
+            <p class="sub-text">Principais problemas apontados pelos entrevistados no entorno da escola.</p>
+            <div class="chart-container">
+              <canvas id="chartRiscos"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORMULÁRIO COLABORATIVO -->
+        <div class="card-box margin-top">
+          <h3><i class="ph ph-warning-octagon text-red"></i> Encontrou um Ponto de Risco? Avise-nos!</h3>
+          <p class="sub-text">Ajude nossa equipe de estudantes a manter o mapeamento da escola sempre atualizado.</p>
+
+          <form id="form-report" onsubmit="handleReportSubmit(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="rep-local">Localização / Cruzamento</label>
+                <input type="text" id="rep-local" placeholder="Ex: Esquina da Rua A com Rua B" required>
+              </div>
+              <div class="form-group">
+                <label for="rep-nivel">Nível do Risco Identificado</label>
+                <select id="rep-nivel" required>
+                  <option value="Atenção (Amarelo)">Atenção (Amarelo)</option>
+                  <option value="Perigo Alto (Vermelho)">Perigo Alto (Vermelho)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="rep-desc">Descrição do Problema Observado</label>
+              <textarea id="rep-desc" rows="3" placeholder="Descreva a ausência de placas, buracos, falta de visibilidade..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">
+              <i class="ph ph-paper-plane-right"></i> Registrar Ponto de Risco
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- TELA 7: NOSSA ESCOLA & VÍDEO -->
+      <section id="tab-escola" class="tab-content">
+        <div class="page-title">
+          <h2><i class="ph ph-graduation-cap"></i> Sobre Nossa Escola &amp; Projeto</h2>
+          <p>Conheça os protagonistas e a instituição por trás do desenvolvimento da Inovação na Mobilidade Urbana.</p>
+        </div>
+
+        <div class="grid-2col">
+          <div class="card-box">
+            <h3><i class="ph ph-buildings"></i> Identificação do Projeto</h3>
+            <div class="school-img-wrapper" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden;">
+              <img src="fachada.jpg" alt="Fachada do Colégio Estadual Rancho Alegre" style="width: 100%; height: auto; display: block;">
+            </div>
+            <ul class="info-list">
+              <li><strong>Escola:</strong> Colégio Estadual Rancho Alegre — EFETIEM</li>
+              <li><strong>Município:</strong> Rancho Alegre / PR</li>
+              <li><strong>Turma / Séries:</strong> Ensino Fundamental &amp; Médio</li>
+              <li><strong>Competição:</strong> Guigui de Trânsito 2026</li>
+            </ul>
+          </div>
+
+          <div class="card-box">
+            <h3><i class="ph ph-film-strip"></i> Vídeo Oficial: "Do Problema à Solução"</h3>
+            <p class="sub-text">Assista ao vídeo produzido pelos alunos mostrando a investigação de campo e as soluções digitais propostas.</p>
+            
+            <div class="video-container">
+              <div class="video-placeholder">
+                <i class="ph ph-play-circle"></i>
+                <p>Vídeo do Projeto "Inovação na Mobilidade Urbana — Caminho Seguro"</p>
+                <small>(Substitua este quadro pelo iFrame do YouTube ou vídeo MP4)</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- RODAPÉ INSTITUCIONAL -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="logo_cera.jpg" alt="C.E.R.A." style="width: 28px; height: 28px; border-radius: 50%;">
+        <p>© 2026 Inovação na Mobilidade Urbana — Caminho Seguro.</p>
+      </div>
+      <p>Projeto Desenvolvido para a Competição <strong>Guigui de Trânsito 2026</strong>.</p>
+    </div>
+  </footer>
+
+  <!-- Leaflet JS (Mapa) -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <!-- Chart.js (Gráficos) -->
+  <script src="https://cdn.jsdelivr.com/npm/chart.js"></script>
+  <!-- Lógica Principal da Aplicação -->
+  <script src="script.js"></script>
+</body>
+</html>
